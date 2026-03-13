@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Beta de Gestao para Aulas Particulares</title>
+  <title>Ferramenta de Gestao para Aulas Particulares</title>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=JetBrains+Mono:wght@600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <style>
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -31,9 +31,14 @@
     .gradient{background:linear-gradient(135deg,#ffffff 0%,var(--a2) 48%,var(--a1) 100%);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shift 6s ease-in-out infinite}
     @keyframes shift{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
     .lead,.sub,.meta,.success p{color:var(--muted);line-height:1.7}
+    .hero-copy{display:grid;gap:10px;max-width:560px;margin:0 auto;text-align:center}
+    .hero-note{display:inline-flex;align-items:center;gap:8px;width:fit-content;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);color:var(--a3);font:700 .72rem "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase}
+    .hero-note::before{content:"";width:8px;height:8px;border-radius:999px;background:var(--a2);box-shadow:0 0 0 4px rgba(255,111,97,.12)}
     .body{padding:24px 32px 32px;background:linear-gradient(180deg,rgba(9,23,43,.28),rgba(10,27,49,.1))}
     .workspace{display:block}
-    .main-stage{min-width:0}
+    .main-stage{min-width:0;max-width:760px;margin:0 auto;width:100%}
+    .brand-row{justify-content:center}
+    .hero-note{margin:0 auto}
     .progress{margin-bottom:20px}
     .progress-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
     .step-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:var(--a3)}
@@ -116,18 +121,20 @@
       </div>
 
       <section class="hero">
-        <div>
+        <div class="hero-copy">
           <div class="brand-row">
             <div class="logo-chip">
               <div class="logo-mark">C</div>
               <div class="logo-text">
                 <strong>CTRL_Classes</strong>
-                <span>beta lab</span>
+                <span>em desenvolvimento</span>
               </div>
             </div>
-            <div class="pill"><span class="dot"></span>Selecao beta</div>
+            <div class="pill"><span class="dot"></span>Sua ajuda faz diferenca</div>
           </div>
-          <h1>Entre no <span class="gradient">beta.</span></h1>
+          <h1>Conta pra gente como voce ensina e ajude a construir essa <span class="gradient">ferramenta.</span></h1>
+          <p class="lead">Suas respostas ajudam no desenvolvimento de uma ferramenta pensada para quem vive de aulas. Leva menos de 3 minutos.</p>
+          <div class="hero-note">menos de 3 min</div>
         </div>
       </section>
 
@@ -249,7 +256,7 @@
             <section class="step" data-step="4">
               <div class="step-panel">
                 <header>
-                  <h3>Fit com o beta</h3>
+                  <h3>Sua participacao</h3>
                 </header>
                 <div class="choice" data-group="funcionalidades_desejadas">
                   <div class="group-title">Que funcoes mais fariam diferenca para voce? <span class="req">*</span></div>
@@ -264,7 +271,7 @@
                   </div>
                 </div>
                 <div class="choice" data-group="interesse_beta">
-                  <div class="group-title">Voce tem interesse em ser beta tester? <span class="req">*</span></div>
+                  <div class="group-title">Voce teria interesse em acompanhar e ajudar no desenvolvimento dessa ferramenta? <span class="req">*</span></div>
                   <div class="options">
                     <div class="opt"><input id="ib1" name="interesse_beta" type="radio" value="Sim, com certeza"><label for="ib1">Sim, com certeza</label></div>
                     <div class="opt"><input id="ib2" name="interesse_beta" type="radio" value="Talvez"><label for="ib2">Talvez</label></div>
@@ -280,14 +287,14 @@
                     <div class="opt"><input id="fb4" name="feedback_disponibilidade" type="radio" value="Hoje eu nao teria tempo"><label for="fb4">Hoje eu nao teria tempo</label></div>
                   </div>
                 </div>
-                <div class="field full"><label for="observacoes">Algo importante que a gente deveria saber?</label><textarea id="observacoes" name="observacoes" placeholder="Conte um pouco da sua rotina, expectativa para o beta ou detalhes que podem ajudar na selecao."></textarea></div>
+                <div class="field full"><label for="observacoes">Algo importante que a gente deveria saber?</label><textarea id="observacoes" name="observacoes" placeholder="Conte um pouco da sua rotina, do que voce busca hoje ou qualquer detalhe que possa ajudar na selecao."></textarea></div>
               </div>
             </section>
 
                 <div class="actions">
                   <button class="secondary" id="back" type="button" hidden>Voltar</button>
                   <button class="primary" id="next" type="button">Continuar</button>
-                  <button class="primary" id="submitButton" type="submit" hidden>Quero entrar no beta</button>
+                  <button class="primary" id="submitButton" type="submit" hidden>Quero participar</button>
                 </div>
               </form>
 
@@ -316,9 +323,9 @@
     (function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<100){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(123,163,219,${.05*(1-d/100)})`;ctx.lineWidth=.5;ctx.stroke()}}}requestAnimationFrame(animate)})();
 
     const form=document.getElementById("form"),formArea=document.getElementById("formArea"),success=document.getElementById("success"),loading=document.getElementById("loading"),errorBox=document.getElementById("errorBox"),next=document.getElementById("next"),back=document.getElementById("back"),submitButton=document.getElementById("submitButton"),stepMarker=document.getElementById("stepMarker"),progressText=document.getElementById("progressText"),meta=document.getElementById("meta"),answerText=document.getElementById("answerText"),steps=[...document.querySelectorAll(".step")];
-    const labels=["Base do perfil","Rotina e volume","Dores de gestao","Fit com o beta"];
+    const labels=["Base do perfil","Rotina e volume","Dores de gestao","Sua participacao"];
     let currentStep=1;
-    const rules={1:[["field","nome","Preencha seu nome."],["field","email","Seu email ajuda na selecao do beta."],["field","whatsapp","Seu WhatsApp ajuda a acelerar o contato."],["field","area_atuacao","Selecione sua area principal de atuacao."]],2:[["group","formatos_aula","Marque pelo menos um formato de aula."],["group","tempo_atuacao","Selecione seu tempo de atuacao."],["group","alunos_mes","Escolha a faixa de alunos por mes."],["group","renda_principal","Informe se essa e sua principal renda."]],3:[["group","organizacao_atual","Marque como voce se organiza hoje."],["field","principal_dor","Descreva a principal dor da sua gestao."],["group","problema_financeiro","Conte se ja rolou confusao com cobranca ou horario."],["group","crescer_6_meses","Diga se voce pretende crescer nos proximos 6 meses."]],4:[["group","funcionalidades_desejadas","Escolha as funcionalidades mais importantes para voce."],["group","interesse_beta","Indique seu interesse em participar do beta."],["group","feedback_disponibilidade","Conte com que frequencia toparia enviar feedback."]]};
+    const rules={1:[["field","nome","Preencha seu nome."],["field","email","Seu email ajuda a gente a falar com voce depois."],["field","whatsapp","Seu WhatsApp ajuda a acelerar o contato."],["field","area_atuacao","Selecione sua area principal de atuacao."]],2:[["group","formatos_aula","Marque pelo menos um formato de aula."],["group","tempo_atuacao","Selecione seu tempo de atuacao."],["group","alunos_mes","Escolha a faixa de alunos por mes."],["group","renda_principal","Informe se essa e sua principal renda."]],3:[["group","organizacao_atual","Marque como voce se organiza hoje."],["field","principal_dor","Descreva a principal dor da sua gestao."],["group","problema_financeiro","Conte se ja rolou confusao com cobranca ou horario."],["group","crescer_6_meses","Diga se voce pretende crescer nos proximos 6 meses."]],4:[["group","funcionalidades_desejadas","Escolha as funcionalidades mais importantes para voce."],["group","interesse_beta","Conte se voce teria interesse em ajudar no desenvolvimento da ferramenta."],["group","feedback_disponibilidade","Conte com que frequencia toparia enviar feedback."]]};
     const textFields=["nome","email","whatsapp","area_atuacao","principal_dor","observacoes"];
     const groups=["formatos_aula","tempo_atuacao","alunos_mes","renda_principal","organizacao_atual","problema_financeiro","crescer_6_meses","funcionalidades_desejadas","interesse_beta","feedback_disponibilidade"];
 
