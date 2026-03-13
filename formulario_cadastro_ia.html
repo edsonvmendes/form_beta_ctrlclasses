@@ -12,10 +12,10 @@
     canvas,.grid,.noise{position:fixed;inset:0;pointer-events:none}
     .grid{background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:58px 58px;mask-image:radial-gradient(circle at center,black 32%,transparent 78%)}
     .noise{opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-    .shell{width:100%;max-width:1180px;position:relative;z-index:1}
+    .shell{width:100%;max-width:900px;position:relative;z-index:1}
     .card{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:28px;background:linear-gradient(180deg,rgba(15,35,65,.92),rgba(22,55,97,.9));backdrop-filter:blur(22px);box-shadow:0 36px 90px -30px rgba(7,16,31,.78),inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden}
     .card::before{content:"";position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--a1),var(--a2),transparent)}
-    .hero{padding:32px 32px 24px;border-bottom:1px solid rgba(255,255,255,.08);display:grid;grid-template-columns:1.1fr .9fr;gap:24px;background:radial-gradient(circle at 0 0,rgba(94,136,199,.18),transparent 24%),radial-gradient(circle at 88% 16%,rgba(255,111,97,.16),transparent 18%),linear-gradient(135deg,rgba(15,35,65,.72),rgba(22,55,97,.28))}
+    .hero{padding:28px 32px 22px;border-bottom:1px solid rgba(255,255,255,.08);display:block;background:radial-gradient(circle at 0 0,rgba(94,136,199,.18),transparent 24%),radial-gradient(circle at 88% 16%,rgba(255,111,97,.16),transparent 18%),linear-gradient(135deg,rgba(15,35,65,.72),rgba(22,55,97,.28))}
     .pill,.tip,.step-badge{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:8px 14px;font:700 .72rem "JetBrains Mono",monospace;letter-spacing:.18em;text-transform:uppercase}
     .pill{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:var(--a3);width:fit-content}
     .brand-row{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-bottom:4px}
@@ -31,35 +31,15 @@
     .gradient{background:linear-gradient(135deg,#ffffff 0%,var(--a2) 48%,var(--a1) 100%);background-size:200% 200%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shift 6s ease-in-out infinite}
     @keyframes shift{0%,100%{background-position:0 50%}50%{background-position:100% 50%}}
     .lead,.sub,.meta,.success p{color:var(--muted);line-height:1.7}
-    .hero-side{display:grid;gap:12px}
-    .mini-card{border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:16px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
-    .mini-card strong{display:block;font-family:"Space Grotesk",sans-serif;font-size:1.03rem;margin-bottom:6px}
-    .mini-card span{color:var(--muted2);font-size:.92rem;line-height:1.6}
-    .hero-trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
-    .trust-item{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:var(--muted);font-size:.86rem}
+    .hero-trust{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .trust-item{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:var(--muted);font-size:.82rem}
     .trust-item::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--a2);box-shadow:0 0 0 4px rgba(255,111,97,.1)}
     .body{padding:30px 32px 32px;background:linear-gradient(180deg,rgba(9,23,43,.28),rgba(10,27,49,.1))}
-    .workspace{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}
+    .workspace{display:block}
     .main-stage{min-width:0}
-    .context-rail{display:grid;gap:14px;position:sticky;top:22px}
-    .rail-card{border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:18px;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));box-shadow:inset 0 1px 0 rgba(255,255,255,.06)}
-    .rail-card.hero-rail{background:radial-gradient(circle at 100% 0,rgba(255,111,97,.16),transparent 30%),radial-gradient(circle at 0 0,rgba(123,163,219,.18),transparent 30%),linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.04))}
-    .rail-kicker{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);font:700 .68rem "JetBrains Mono",monospace;letter-spacing:.16em;text-transform:uppercase;color:var(--a3);margin-bottom:12px}
-    .rail-kicker::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--a2)}
-    .rail-title{font-family:"Space Grotesk",sans-serif;font-size:1.26rem;line-height:1.1;margin-bottom:8px}
-    .rail-copy{color:var(--muted);line-height:1.7;font-size:.94rem}
-    .rail-list{list-style:none;display:grid;gap:10px;margin-top:16px}
-    .rail-list li{display:flex;gap:10px;color:var(--muted);font-size:.92rem;line-height:1.55}
-    .rail-list li::before{content:"";flex:0 0 9px;height:9px;border-radius:50%;margin-top:5px;background:linear-gradient(135deg,var(--a1),var(--a2))}
-    .rail-mini-title{font-family:"Space Grotesk",sans-serif;font-size:1rem;margin-bottom:10px}
-    .rail-metrics{display:grid;gap:10px}
-    .rail-metric{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-top:1px solid rgba(255,255,255,.08)}
-    .rail-metric:first-child{border-top:none;padding-top:0}
-    .rail-metric span{color:var(--muted2);font-size:.88rem}
-    .rail-metric strong{font-size:.94rem;color:#fff}
     .form-head{margin-bottom:22px}
-    .form-head h2{font-size:clamp(1.55rem,2vw,2.15rem);margin:10px 0;max-width:14ch}
-    .form-head .sub{max-width:62ch}
+    .form-head h2{font-size:clamp(1.45rem,2vw,1.95rem);margin:10px 0;max-width:16ch}
+    .form-head .sub{max-width:48ch}
     .progress{margin-bottom:20px}
     .progress-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
     .step-badge{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:var(--a3)}
@@ -71,14 +51,14 @@
     .step{display:none}
     .step.active{display:block;animation:slide .28s ease}
     @keyframes slide{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:none}}
-    .step-panel{display:grid;gap:18px}
+    .step-panel{display:grid;gap:16px}
     .step-panel header h3{font-size:1.14rem;margin-bottom:8px}
     .step-panel header p{color:var(--muted2);line-height:1.65;font-size:.94rem}
     .grid2{display:grid;grid-template-columns:1fr;gap:16px;max-width:720px}
     .field{display:grid;gap:8px}
     .field.full{grid-column:1/-1}
     .field label,.group-title{color:rgba(247,243,255,.86);font-size:.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase}
-    .field-help{color:var(--muted2);font-size:.86rem;line-height:1.55}
+    .field-help{color:var(--muted2);font-size:.82rem;line-height:1.5}
     .req{color:var(--a2)}
     input[type="text"],input[type="email"],input[type="tel"],select,textarea{width:100%;border:1px solid rgba(255,255,255,.12);border-radius:18px;background:rgba(255,255,255,.06);color:var(--text);padding:16px 18px;font:500 .98rem "DM Sans",sans-serif;outline:none;transition:.2s;appearance:none}
     select{color:var(--text);background-color:rgba(255,255,255,.06);padding-right:48px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23dbeafe' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
@@ -88,7 +68,7 @@
     input::placeholder,textarea::placeholder{color:var(--muted2)}
     input:hover,select:hover,textarea:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2)}
     input:focus,select:focus,textarea:focus{border-color:rgba(255,111,97,.38);box-shadow:0 0 0 4px rgba(255,111,97,.12);background:rgba(255,255,255,.08)}
-    .choice{display:grid;gap:12px;padding:18px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));position:relative;overflow:hidden}
+    .choice{display:grid;gap:10px;padding:16px;border:1px solid rgba(255,255,255,.12);border-radius:22px;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));position:relative;overflow:hidden}
     .choice::before{content:"";position:absolute;inset:0 auto auto 0;width:100%;height:1px;background:linear-gradient(90deg,rgba(123,163,219,.46),rgba(255,111,97,.34),transparent)}
     .options{display:flex;flex-wrap:wrap;gap:10px}
     .opt{position:relative}
@@ -96,7 +76,7 @@
     .opt label{display:inline-flex;align-items:center;min-height:44px;padding:10px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);color:var(--muted);font-size:.95rem;line-height:1.4;cursor:pointer;transition:.18s}
     .opt label:hover{border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:var(--text)}
     .opt input:checked+label{background:linear-gradient(135deg,rgba(123,163,219,.24),rgba(255,111,97,.18));border-color:rgba(255,111,97,.28);color:var(--text)}
-    .actions{display:flex;gap:12px;margin-top:24px;padding:16px;border:1px solid rgba(255,255,255,.1);border-radius:24px;background:linear-gradient(180deg,rgba(15,35,65,.68),rgba(15,35,65,.48));backdrop-filter:blur(20px);position:sticky;bottom:14px;z-index:2}
+    .actions{display:flex;gap:12px;margin-top:20px;padding:14px;border:1px solid rgba(255,255,255,.1);border-radius:24px;background:linear-gradient(180deg,rgba(15,35,65,.68),rgba(15,35,65,.48));backdrop-filter:blur(20px);position:sticky;bottom:14px;z-index:2}
     button{border:none;border-radius:16px;padding:16px 20px;cursor:pointer;transition:.2s;font:700 .96rem "Space Grotesk",sans-serif}
     button:hover{transform:translateY(-1px)}button:active{transform:none}
     .primary{flex:1;background:linear-gradient(135deg,#ffffff 0%,#dbeafe 22%,#ffbe98 100%);color:#0f2341;box-shadow:0 16px 36px -20px rgba(216,229,251,.45)}
@@ -127,8 +107,8 @@
     .answer-text{min-height:96px;white-space:pre-wrap}
     .typing::after{content:"|";color:var(--a1);animation:blink .72s step-end infinite}
     @keyframes blink{50%{opacity:0}}
-    @media (max-width:980px){.workspace{grid-template-columns:1fr}.context-rail{position:static;order:-1}.form-head h2{max-width:none}}
-    @media (max-width:860px){.hero{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
+    @media (max-width:980px){.form-head h2{max-width:none}}
+    @media (max-width:860px){.grid2{grid-template-columns:1fr}}
     @media (max-width:640px){body{padding:18px 12px}.hero,.body{padding:22px 18px}.actions{flex-direction:column;position:static}.secondary{width:100%}.brand-row{gap:10px}}
   </style>
 </head>
@@ -155,18 +135,13 @@
             </div>
             <div class="pill"><span class="dot"></span>Selecao beta</div>
           </div>
-          <h1>Voce ensina. <span class="gradient">A gente quer organizar o resto.</span></h1>
-          <p class="lead">Estamos buscando professores autonomos para testar uma aplicacao de gestao de aulas particulares. A ideia e juntar agenda, alunos, faltas, reposicoes e financeiro num fluxo simples de usar.</p>
+          <h1>Voce ensina. <span class="gradient">A gente organiza.</span></h1>
+          <p class="lead">Estamos selecionando professores autonomos para testar uma aplicacao de gestao de aulas.</p>
           <div class="hero-trust">
             <div class="trust-item">3 minutos para preencher</div>
-            <div class="trust-item">Sem alterar sua rotina atual</div>
-            <div class="trust-item">Foco total em professores autonomos</div>
+            <div class="trust-item">Perfil real vale mais</div>
+            <div class="trust-item">Foco em autonomos</div>
           </div>
-        </div>
-        <div class="hero-side">
-          <div class="mini-card"><strong>Quem entra bem no beta</strong><span>Quem ja tem alunos, sente dor de organizacao e topa testar ferramenta nova com feedback real.</span></div>
-          <div class="mini-card"><strong>Para quais nichos</strong><span>Idiomas, reforco, concursos, musica, fitness, tecnologia, artes e qualquer outro formato de aula.</span></div>
-          <div class="mini-card"><strong>Como vamos usar isso</strong><span>As respostas ajudam a priorizar perfis fortes antes do convite beta e alimentam o fluxo do n8n.</span></div>
         </div>
       </section>
 
@@ -176,8 +151,8 @@
             <div id="formArea">
               <div class="form-head">
                 <div class="pill"><span class="dot"></span>Formulario de interesse</div>
-                <h2>Vamos identificar professores com <span class="gradient">perfil forte para o beta</span></h2>
-                <p class="sub">As perguntas abaixo foram desenhadas para medir operacao, dor de gestao e vontade real de testar uma ferramenta nova.</p>
+                <h2>Vamos identificar professores com <span class="gradient">perfil forte</span></h2>
+                <p class="sub">Poucas perguntas, sinais claros e uma triagem melhor.</p>
               </div>
 
               <div class="progress">
@@ -198,13 +173,13 @@
               <div class="step-panel">
                 <header>
                   <h3>Quem e voce no jogo das aulas particulares?</h3>
-                  <p>Primeiro, vamos entender o basico do seu perfil e da sua area de atuacao.</p>
+                  <p>Comecamos pelo essencial.</p>
                 </header>
                 <div class="grid2">
-                  <div class="field"><label for="nome">Nome completo <span class="req">*</span></label><input id="nome" name="nome" type="text" placeholder="Como devemos te chamar?"><div class="field-help">Seu nome ajuda a personalizar a triagem e o contato do beta.</div></div>
-                  <div class="field"><label for="email">Melhor email <span class="req">*</span></label><input id="email" name="email" type="email" placeholder="voce@email.com"><div class="field-help">Usaremos esse canal para convite, updates e onboarding do beta.</div></div>
-                  <div class="field"><label for="whatsapp">WhatsApp <span class="req">*</span></label><input id="whatsapp" name="whatsapp" type="tel" placeholder="(11) 99999-9999"><div class="field-help">Se seu perfil for forte, esse e o jeito mais rapido de te chamar.</div></div>
-                  <div class="field"><label for="area_atuacao">Area principal das aulas <span class="req">*</span></label><select id="area_atuacao" name="area_atuacao"><option value="">Selecione uma opcao</option><option value="Idiomas">Idiomas</option><option value="Reforco escolar">Reforco escolar</option><option value="Preparacao para concursos">Preparacao para concursos</option><option value="Musica">Musica</option><option value="Fitness">Fitness</option><option value="Tecnologia">Tecnologia</option><option value="Artes">Artes</option><option value="Mentoria e desenvolvimento">Mentoria e desenvolvimento</option><option value="Outro">Outro</option></select><div class="field-help">Queremos entender se a ferramenta conversa com o seu tipo de operacao.</div></div>
+                  <div class="field"><label for="nome">Nome completo <span class="req">*</span></label><input id="nome" name="nome" type="text" placeholder="Como devemos te chamar?"></div>
+                  <div class="field"><label for="email">Melhor email <span class="req">*</span></label><input id="email" name="email" type="email" placeholder="voce@email.com"></div>
+                  <div class="field"><label for="whatsapp">WhatsApp <span class="req">*</span></label><input id="whatsapp" name="whatsapp" type="tel" placeholder="(11) 99999-9999"></div>
+                  <div class="field"><label for="area_atuacao">Area principal das aulas <span class="req">*</span></label><select id="area_atuacao" name="area_atuacao"><option value="">Selecione uma opcao</option><option value="Idiomas">Idiomas</option><option value="Reforco escolar">Reforco escolar</option><option value="Preparacao para concursos">Preparacao para concursos</option><option value="Musica">Musica</option><option value="Fitness">Fitness</option><option value="Tecnologia">Tecnologia</option><option value="Artes">Artes</option><option value="Mentoria e desenvolvimento">Mentoria e desenvolvimento</option><option value="Outro">Outro</option></select></div>
                 </div>
               </div>
             </section>
@@ -213,7 +188,7 @@
               <div class="step-panel">
                 <header>
                   <h3>Como sua operacao funciona hoje?</h3>
-                  <p>Agora a gente mede volume, formato das aulas e maturidade da sua rotina.</p>
+                  <p>Agora, sua rotina real.</p>
                 </header>
                 <div class="choice" data-group="formatos_aula">
                   <div class="group-title">Que tipo de aula voce oferece? <span class="req">*</span></div>
@@ -260,7 +235,7 @@
               <div class="step-panel">
                 <header>
                   <h3>Onde a rotina comeca a pesar?</h3>
-                  <p>Esse bloco foi desenhado para revelar se existe dor real de agenda, cobranca e controle.</p>
+                  <p>Aqui mora o sinal mais forte.</p>
                 </header>
                 <div class="choice" data-group="organizacao_atual">
                   <div class="group-title">Hoje, como voce organiza aulas, alunos e pagamentos? <span class="req">*</span></div>
@@ -273,7 +248,7 @@
                     <div class="opt"><input id="oa6" name="organizacao_atual" type="checkbox" value="Muita coisa fica na cabeca"><label for="oa6">Muita coisa fica na cabeca</label></div>
                   </div>
                 </div>
-                <div class="field full"><label for="principal_dor">Qual e a maior dificuldade da sua gestao hoje? <span class="req">*</span></label><textarea id="principal_dor" name="principal_dor" placeholder="Ex.: lembrar cobrancas, remarcar aulas, acompanhar faltas, saber quanto entrou no mes, organizar alunos..."></textarea><div class="field-help">Quanto mais concreta for a dor, melhor a IA e a selecao conseguem entender seu perfil.</div></div>
+                <div class="field full"><label for="principal_dor">Qual e a maior dificuldade da sua gestao hoje? <span class="req">*</span></label><textarea id="principal_dor" name="principal_dor" placeholder="Ex.: lembrar cobrancas, remarcar aulas, acompanhar faltas, saber quanto entrou no mes, organizar alunos..."></textarea></div>
                 <div class="choice" data-group="problema_financeiro">
                   <div class="group-title">Voce ja perdeu dinheiro, esqueceu cobranca ou se confundiu com horarios? <span class="req">*</span></div>
                   <div class="options">
@@ -298,7 +273,7 @@
               <div class="step-panel">
                 <header>
                   <h3>Agora vamos medir o fit com o beta</h3>
-                  <p>Fechamos entendendo o que faria voce usar a ferramenta de verdade e o quanto toparia testar.</p>
+                  <p>Ultima etapa.</p>
                 </header>
                 <div class="choice" data-group="funcionalidades_desejadas">
                   <div class="group-title">Que funcoes mais fariam diferenca para voce? <span class="req">*</span></div>
@@ -329,7 +304,7 @@
                     <div class="opt"><input id="fb4" name="feedback_disponibilidade" type="radio" value="Hoje eu nao teria tempo"><label for="fb4">Hoje eu nao teria tempo</label></div>
                   </div>
                 </div>
-                <div class="field full"><label for="observacoes">Algo importante que a gente deveria saber?</label><textarea id="observacoes" name="observacoes" placeholder="Conte um pouco da sua rotina, expectativa para o beta ou detalhes que podem ajudar na selecao."></textarea><div class="field-help">Campo opcional, mas ajuda muito quando voce quer explicar contexto, ambicao ou urgencia.</div></div>
+                <div class="field full"><label for="observacoes">Algo importante que a gente deveria saber?</label><textarea id="observacoes" name="observacoes" placeholder="Conte um pouco da sua rotina, expectativa para o beta ou detalhes que podem ajudar na selecao."></textarea></div>
               </div>
             </section>
 
@@ -341,42 +316,18 @@
               </form>
 
               <div class="error" id="errorBox"></div>
-              <div class="tip">Dica: essas respostas ja servem para qualificar perfis no n8n antes de decidir quem vai receber o convite beta.</div>
+              <div class="tip">Essas respostas ja ajudam a qualificar o perfil no n8n.</div>
             </div>
 
             <div class="success" id="success">
               <div class="check"><svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="32"></circle><polyline points="22,38 32,48 50,26"></polyline></svg></div>
               <h2>Perfil enviado para analise</h2>
-              <p>O formulario agora esta pronto para captar professores autonomos com dor real de gestao e interesse em testar produto.</p>
+              <p>Recebemos seu perfil e ele ja pode seguir para classificacao automatica.</p>
               <div class="meta" id="meta"></div>
               <div class="answer"><div class="answer-text typing" id="answerText"></div></div>
             </div>
           </div>
 
-          <aside class="context-rail" aria-label="Contexto da etapa">
-            <div class="rail-card hero-rail">
-              <div class="rail-kicker" id="railKicker">Agora olhando para</div>
-              <div class="rail-title" id="railTitle">Base do perfil</div>
-              <div class="rail-copy" id="railCopy">Comecamos pelo essencial para entender quem ensina, em qual nicho atua e como esse perfil entra na selecao.</div>
-              <ul class="rail-list" id="railList">
-                <li>Contato certo evita atrito quando voce entrar no beta.</li>
-                <li>Seu nicho ajuda a calibrar prioridade e roadmap.</li>
-                <li>Essa etapa leva menos de 1 minuto.</li>
-              </ul>
-            </div>
-            <div class="rail-card">
-              <div class="rail-mini-title">O que acelera sua aprovacao</div>
-              <div class="rail-metrics">
-                <div class="rail-metric"><span>Dor operacional clara</span><strong>mais peso</strong></div>
-                <div class="rail-metric"><span>Volume de alunos real</span><strong>mais sinal</strong></div>
-                <div class="rail-metric"><span>Abertura para feedback</span><strong>mais chance</strong></div>
-              </div>
-            </div>
-            <div class="rail-card">
-              <div class="rail-mini-title">Depois do envio</div>
-              <div class="rail-copy">Seu fluxo pode classificar o perfil, salvar no Supabase e devolver uma resposta personalizada em segundos.</div>
-            </div>
-          </aside>
         </div>
       </section>
     </div>
@@ -389,14 +340,8 @@
     for(let i=0;i<88;i++)particles.push(new Particle());
     (function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<100){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(123,163,219,${.05*(1-d/100)})`;ctx.lineWidth=.5;ctx.stroke()}}}requestAnimationFrame(animate)})();
 
-    const form=document.getElementById("form"),formArea=document.getElementById("formArea"),success=document.getElementById("success"),loading=document.getElementById("loading"),errorBox=document.getElementById("errorBox"),next=document.getElementById("next"),back=document.getElementById("back"),submitButton=document.getElementById("submitButton"),stepMarker=document.getElementById("stepMarker"),progressText=document.getElementById("progressText"),meta=document.getElementById("meta"),answerText=document.getElementById("answerText"),steps=[...document.querySelectorAll(".step")],railKicker=document.getElementById("railKicker"),railTitle=document.getElementById("railTitle"),railCopy=document.getElementById("railCopy"),railList=document.getElementById("railList");
+    const form=document.getElementById("form"),formArea=document.getElementById("formArea"),success=document.getElementById("success"),loading=document.getElementById("loading"),errorBox=document.getElementById("errorBox"),next=document.getElementById("next"),back=document.getElementById("back"),submitButton=document.getElementById("submitButton"),stepMarker=document.getElementById("stepMarker"),progressText=document.getElementById("progressText"),meta=document.getElementById("meta"),answerText=document.getElementById("answerText"),steps=[...document.querySelectorAll(".step")];
     const labels=["Base do perfil","Rotina e volume","Dores de gestao","Fit com o beta"];
-    const contexts=[
-      {kicker:"Contexto da etapa",title:"Base do perfil",copy:"Comecamos pelo essencial para entender quem ensina, em qual nicho atua e como esse perfil entra na selecao.",items:["Contato certo evita atrito quando voce entrar no beta.","Seu nicho ajuda a calibrar prioridade e roadmap.","Essa etapa leva menos de 1 minuto."]},
-      {kicker:"Agora olhando para",title:"Rotina e volume",copy:"Aqui medimos se existe uma operacao real por tras do cadastro e quanto esse professor vive da propria agenda.",items:["Volume de alunos aumenta o valor do teste.","Formato da aula revela necessidades diferentes.","Renda principal indica maturidade da operacao."]},
-      {kicker:"Agora olhando para",title:"Dores de gestao",copy:"Esse e o trecho mais importante para encontrar pessoas que realmente sentem o problema que o produto quer resolver.",items:["Dor concreta pesa mais que curiosidade vaga.","Quem ja perdeu controle financeiro costuma aderir melhor.","Desejo de crescimento aumenta o fit com o beta."]},
-      {kicker:"Agora olhando para",title:"Fit com o beta",copy:"Na reta final, avaliamos interesse real em testar, abertura para feedback e quais funcoes despertam mais valor percebido.",items:["Feedback recorrente e ouro para produto cedo.","Interesse forte ajuda a priorizar convites.","Funcionalidades favoritas ajudam a definir onboarding."]}
-    ];
     let currentStep=1;
     const rules={1:[["field","nome","Preencha seu nome."],["field","email","Seu email ajuda na selecao do beta."],["field","whatsapp","Seu WhatsApp ajuda a acelerar o contato."],["field","area_atuacao","Selecione sua area principal de atuacao."]],2:[["group","formatos_aula","Marque pelo menos um formato de aula."],["group","tempo_atuacao","Selecione seu tempo de atuacao."],["group","alunos_mes","Escolha a faixa de alunos por mes."],["group","renda_principal","Informe se essa e sua principal renda."]],3:[["group","organizacao_atual","Marque como voce se organiza hoje."],["field","principal_dor","Descreva a principal dor da sua gestao."],["group","problema_financeiro","Conte se ja rolou confusao com cobranca ou horario."],["group","crescer_6_meses","Diga se voce pretende crescer nos proximos 6 meses."]],4:[["group","funcionalidades_desejadas","Escolha as funcionalidades mais importantes para voce."],["group","interesse_beta","Indique seu interesse em participar do beta."],["group","feedback_disponibilidade","Conte com que frequencia toparia enviar feedback."]]};
     const textFields=["nome","email","whatsapp","area_atuacao","principal_dor","observacoes"];
@@ -408,7 +353,7 @@
     function hideError(){errorBox.textContent="";errorBox.classList.remove("show")}
     function focusItem(type,name){const el=type==="field"?document.querySelector(`[name="${name}"]`):document.querySelector(`[data-group="${name}"]`);if(el){el.scrollIntoView({behavior:"smooth",block:"center"});if(type==="field")el.focus()}}
     function validateStep(step){for(const [type,name,message] of rules[step]){if(type==="field"&&!value(name)){showError(message);focusItem(type,name);return false}if(type==="group"&&selected(name).length===0){showError(message);focusItem(type,name);return false}}hideError();return true}
-    function paint(){stepMarker.textContent=`Etapa ${currentStep} de 4`;progressText.textContent=labels[currentStep-1];for(let i=1;i<=4;i++){const pip=document.getElementById(`pip${i}`);pip.classList.toggle("active",i===currentStep);pip.classList.toggle("done",i<currentStep)}const context=contexts[currentStep-1];railKicker.textContent=context.kicker;railTitle.textContent=context.title;railCopy.textContent=context.copy;railList.innerHTML=context.items.map(item=>`<li>${item}</li>`).join("");back.hidden=currentStep===1;next.hidden=currentStep===4;submitButton.hidden=currentStep!==4}
+    function paint(){stepMarker.textContent=`Etapa ${currentStep} de 4`;progressText.textContent=labels[currentStep-1];for(let i=1;i<=4;i++){const pip=document.getElementById(`pip${i}`);pip.classList.toggle("active",i===currentStep);pip.classList.toggle("done",i<currentStep)}back.hidden=currentStep===1;next.hidden=currentStep===4;submitButton.hidden=currentStep!==4}
     function go(step){steps.forEach(item=>item.classList.toggle("active",Number(item.dataset.step)===step));currentStep=step;paint();hideError()}
     next.addEventListener("click",()=>{if(validateStep(currentStep))go(currentStep+1)});
     back.addEventListener("click",()=>go(currentStep-1));
