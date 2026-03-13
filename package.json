@@ -1,0 +1,9 @@
+{
+  "name": "n8n-cadastro-ia",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Formulario com servidor local e integracao didatica com n8n",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
