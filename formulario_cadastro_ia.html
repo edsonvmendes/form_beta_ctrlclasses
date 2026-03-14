@@ -103,7 +103,7 @@
     .success h2{font-size:1.72rem;margin-bottom:10px}
     .meta{margin-top:14px;font-size:.88rem}
     .answer{margin-top:24px;text-align:left;border-radius:20px;border:1px solid rgba(123,163,219,.22);background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));padding:20px;line-height:1.8;color:rgba(248,251,255,.9)}
-    .answer::before{content:"Leitura da IA";display:block;margin-bottom:12px;color:var(--a3);font:700 .78rem "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.14em}
+    .answer::before{content:"Mensagem para voce";display:block;margin-bottom:12px;color:var(--a3);font:700 .78rem "JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.14em}
     .answer-text{min-height:96px;white-space:pre-wrap}
     .typing::after{content:"|";color:var(--a1);animation:blink .72s step-end infinite}
     @keyframes blink{50%{opacity:0}}
@@ -305,8 +305,8 @@
 
             <div class="success" id="success">
               <div class="check"><svg viewBox="0 0 72 72"><circle cx="36" cy="36" r="32"></circle><polyline points="22,38 32,48 50,26"></polyline></svg></div>
-              <h2>Perfil enviado para analise</h2>
-              <p>Recebemos seu perfil e ele ja pode seguir para classificacao automatica.</p>
+              <h2>Obrigado por participar</h2>
+              <p>Suas respostas ajudam a construir uma ferramenta mais util para quem vive de aulas.</p>
               <div class="meta" id="meta"></div>
               <div class="answer"><div class="answer-text typing" id="answerText"></div></div>
             </div>
@@ -324,7 +324,7 @@
     for(let i=0;i<88;i++)particles.push(new Particle());
     (function animate(){ctx.clearRect(0,0,canvas.width,canvas.height);particles.forEach(p=>{p.update();p.draw()});for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<100){ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.strokeStyle=`rgba(123,163,219,${.05*(1-d/100)})`;ctx.lineWidth=.5;ctx.stroke()}}}requestAnimationFrame(animate)})();
 
-    const form=document.getElementById("form"),formArea=document.getElementById("formArea"),success=document.getElementById("success"),loading=document.getElementById("loading"),errorBox=document.getElementById("errorBox"),next=document.getElementById("next"),back=document.getElementById("back"),submitButton=document.getElementById("submitButton"),stepMarker=document.getElementById("stepMarker"),progressText=document.getElementById("progressText"),meta=document.getElementById("meta"),answerText=document.getElementById("answerText"),steps=[...document.querySelectorAll(".step")];
+    const form=document.getElementById("form"),formArea=document.getElementById("formArea"),success=document.getElementById("success"),loading=document.getElementById("loading"),errorBox=document.getElementById("errorBox"),next=document.getElementById("next"),back=document.getElementById("back"),submitButton=document.getElementById("submitButton"),stepMarker=document.getElementById("stepMarker"),progressText=document.getElementById("progressText"),meta=document.getElementById("meta"),answerText=document.getElementById("answerText"),mainStage=document.querySelector(".main-stage"),steps=[...document.querySelectorAll(".step")];
     const labels=["Base do perfil","Rotina e volume","Dores de gestao","Sua participacao"];
     let currentStep=1;
     const rules={1:[["field","nome","Preencha seu nome."],["field","email","Seu email ajuda a gente a falar com voce depois."],["field","whatsapp","Seu WhatsApp ajuda a acelerar o contato."],["field","area_atuacao","Selecione sua area principal de atuacao."]],2:[["group","formatos_aula","Marque pelo menos um formato de aula."],["group","tempo_atuacao","Selecione seu tempo de atuacao."],["group","alunos_mes","Escolha a faixa de alunos por mes."],["group","renda_principal","Informe se essa e sua principal renda."]],3:[["group","organizacao_atual","Marque como voce se organiza hoje."],["field","principal_dor","Descreva a principal dor da sua gestao."],["group","problema_financeiro","Conte se ja rolou confusao com cobranca ou horario."],["group","crescer_6_meses","Diga se voce pretende crescer nos proximos 6 meses."]],4:[["group","funcionalidades_desejadas","Escolha as funcionalidades mais importantes para voce."],["group","interesse_beta","Conte se voce teria interesse em ajudar no desenvolvimento da ferramenta."],["group","feedback_disponibilidade","Conte com que frequencia toparia enviar feedback."]]};
@@ -336,16 +336,17 @@
     function showError(msg){errorBox.textContent=msg;errorBox.classList.add("show")}
     function hideError(){errorBox.textContent="";errorBox.classList.remove("show")}
     function focusItem(type,name){const el=type==="field"?document.querySelector(`[name="${name}"]`):document.querySelector(`[data-group="${name}"]`);if(el){el.scrollIntoView({behavior:"smooth",block:"center"});if(type==="field")el.focus()}}
+    function scrollStageTop(){if(window.innerWidth>768||!mainStage)return;const top=mainStage.getBoundingClientRect().top+window.scrollY-16;window.scrollTo({top:Math.max(0,top),behavior:"smooth"})}
     function validateStep(step){for(const [type,name,message] of rules[step]){if(type==="field"&&!value(name)){showError(message);focusItem(type,name);return false}if(type==="group"&&selected(name).length===0){showError(message);focusItem(type,name);return false}}hideError();return true}
     function paint(){stepMarker.textContent=`Etapa ${currentStep} de 4`;progressText.textContent=labels[currentStep-1];for(let i=1;i<=4;i++){const pip=document.getElementById(`pip${i}`);pip.classList.toggle("active",i===currentStep);pip.classList.toggle("done",i<currentStep)}back.hidden=currentStep===1;next.hidden=currentStep===4;submitButton.hidden=currentStep!==4}
-    function go(step){steps.forEach(item=>item.classList.toggle("active",Number(item.dataset.step)===step));currentStep=step;paint();hideError()}
+    function go(step){steps.forEach(item=>item.classList.toggle("active",Number(item.dataset.step)===step));currentStep=step;paint();hideError();requestAnimationFrame(scrollStageTop)}
     next.addEventListener("click",()=>{if(validateStep(currentStep))go(currentStep+1)});
     back.addEventListener("click",()=>go(currentStep-1));
     textFields.forEach(name=>document.querySelectorAll(`[name="${name}"]`).forEach(el=>{el.addEventListener("input",hideError);el.addEventListener("change",hideError)}));
     groups.forEach(name=>document.querySelectorAll(`[name="${name}"]`).forEach(el=>el.addEventListener("change",hideError)));
 
     function payload(){return{nome:value("nome"),email:value("email"),whatsapp:value("whatsapp"),area_atuacao:value("area_atuacao"),formatos_aula:selected("formatos_aula"),tempo_atuacao:selected("tempo_atuacao")[0]||"",alunos_mes:selected("alunos_mes")[0]||"",renda_principal:selected("renda_principal")[0]||"",organizacao_atual:selected("organizacao_atual"),principal_dor:value("principal_dor"),problema_financeiro:selected("problema_financeiro")[0]||"",crescer_6_meses:selected("crescer_6_meses")[0]||"",funcionalidades_desejadas:selected("funcionalidades_desejadas"),interesse_beta:selected("interesse_beta")[0]||"",feedback_disponibilidade:selected("feedback_disponibilidade")[0]||"",observacoes:value("observacoes")}}
-    form.addEventListener("submit",async e=>{e.preventDefault();if(!validateStep(4))return;loading.classList.add("on");hideError();try{const response=await fetch("/api/cadastro",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload())});const result=await response.json();if(!response.ok)throw new Error(result.error||"Nao foi possivel concluir o envio.");loading.classList.remove("on");formArea.style.display="none";success.classList.add("show");meta.textContent=result.source==="n8n"?"Resposta real vinda do n8n.":"Resposta demo gerada pelo servidor local.";typeText(answerText,result.message||"A resposta voltou vazia.")}catch(error){loading.classList.remove("on");showError(error.message||"Ocorreu um erro inesperado.")}});
+    form.addEventListener("submit",async e=>{e.preventDefault();if(!validateStep(4))return;loading.classList.add("on");hideError();try{const response=await fetch("/api/cadastro",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload())});const result=await response.json();if(!response.ok)throw new Error(result.error||"Nao foi possivel concluir o envio.");loading.classList.remove("on");formArea.style.display="none";success.classList.add("show");meta.textContent="A gente leu sua resposta e ja registrou sua participacao.";typeText(answerText,result.message||"Obrigado por compartilhar sua experiencia com a gente.")}catch(error){loading.classList.remove("on");showError(error.message||"Ocorreu um erro inesperado.")}});
     function typeText(el,text,speed=18){let i=0;el.textContent="";el.classList.add("typing");(function type(){if(i<text.length){el.textContent+=text.charAt(i);i+=1;setTimeout(type,speed+Math.random()*10)}else{el.classList.remove("typing")}})()}
     paint();
   </script>
